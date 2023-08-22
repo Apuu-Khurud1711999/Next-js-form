@@ -1,5 +1,5 @@
 .form-input {
-    padding: 20px 25px 0px;
+    padding: 20px 40px 10px;
 }
 
 .button_input {
@@ -7,10 +7,10 @@
     width: 300px;
 }
 
-.inputcss{
+.inputcss {
     padding: 15px 20px;
 }
 
-.pagecss{
+.pagecss {
     text-align: center;
 }

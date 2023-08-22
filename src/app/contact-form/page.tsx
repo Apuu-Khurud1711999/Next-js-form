@@ -17,11 +17,13 @@ interface FormValues {
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
+    email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
     company_name: Yup.string().required('Company name is required'),
     ph_no: Yup.string()
-    .matches(/^\d{10}$/, 'Mobile number must be a 10-digit number')
-    .required('Mobile number is required'),
+        .matches(/^\d{10}$/, 'Mobile number must be a 10-digit number')
+        .required('Mobile number is required'),
     subject: Yup.string().required('Subject is required'),
     e_procedure: Yup.string().required('Description is required'),
 });
@@ -55,7 +57,7 @@ const page: React.FC = () => {
                                 <ErrorMessage name='name' component='div' className='error-message' />
                             </div>
                             <div className="col col-lg-6">
-                                <input type="email" className="form-control inputcss" id="email" name='email' placeholder='Work Email' />
+                                <Field type='email' className='form-control inputcss' id='email' name='email' placeholder='Work Email' />
                                 <ErrorMessage name='email' component='div' className='error-message' />
                             </div>
                         </div>
