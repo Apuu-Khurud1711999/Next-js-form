@@ -10,7 +10,7 @@ interface FormValues {
     name: string;
     email: string;
     company_name: string;
-    ph_no: number;
+    ph_no: string;
     subject: string;
     e_procedure: string;
 }
@@ -19,7 +19,9 @@ const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     company_name: Yup.string().required('Company name is required'),
-    ph_no: Yup.number().typeError('Phone number must be a number').required('Phone number is required'),
+    ph_no: Yup.string()
+    .matches(/^\d{10}$/, 'Mobile number must be a 10-digit number')
+    .required('Mobile number is required'),
     subject: Yup.string().required('Subject is required'),
     e_procedure: Yup.string().required('Description is required'),
 });
@@ -38,7 +40,7 @@ const page: React.FC = () => {
                     name: '',
                     email: '',
                     company_name: '',
-                    ph_no: 9999,
+                    ph_no: '',
                     subject: '',
                     e_procedure: '',
                 }}
@@ -63,7 +65,7 @@ const page: React.FC = () => {
                                 <ErrorMessage name='company_name' component='div' className='error-message' />
                             </div>
                             <div className="col col-lg-6">
-                                <Field type="number" className="form-control inputcss" id="ph_no" name='ph_no' placeholder='Phone Number' />
+                                <Field type="text" className="form-control inputcss" id="ph_no" name='ph_no' placeholder='Phone Number' />
                                 <ErrorMessage name='ph_no' component='div' className='error-message' />
                             </div>
                         </div>
